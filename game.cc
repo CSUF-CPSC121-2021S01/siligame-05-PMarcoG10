@@ -14,9 +14,21 @@ std::vector<std::unique_ptr<PlayerProjectile>> &Game::GetPlayerProjectiles() {
 graphics::Image &Game::GetGameScreen() { return game_; }
 void Game::CreateOpponents() {
   Opponent dino;
-  dino.SetX(10);
+  dino.SetX(40);
   dino.SetY(10);
   dino_.push_back(std::make_unique<Opponent>(dino));
+  Opponent dino2;
+  dino2.SetX(90);
+  dino2.SetY(10);
+  dino_.push_back(std::make_unique<Opponent>(dino2));
+  Opponent dino3;
+  dino3.SetX(130);
+  dino3.SetY(10);
+  dino_.push_back(std::make_unique<Opponent>(dino3));
+  Opponent dino4;
+  dino4.SetX(170);
+  dino4.SetY(10);
+  dino_.push_back(std::make_unique<Opponent>(dino4));
 }
 void Game::Init() {
   knight_.SetX(300);
@@ -29,10 +41,9 @@ void Game::UpdateScreen() {
   // const graphics::Color bluish(127, 229, 240);
   const graphics::Color white(255, 255, 255);
   const graphics::Color black(0, 0, 0);
-  std::string update = std::to_string(GetScore());
   game_.DrawRectangle(0, 0, 800, 600, white);
   // this sets text onto the score
-  game_.DrawText(10, 10, std::to_string(score_), 25, black);
+  game_.DrawText(10, 10, "Score: " + std::to_string(score_), 25, black);
 
   if (knight_.GetIsActive()) {
     knight_.Draw(game_);
